@@ -20,22 +20,21 @@ public class GuessTheNumberGame {
         int i;
         for(i=1;;i++){
             int userGuess = humanPlayer.makeGuess();
-
             if (userGuess == targetNumber) {
                 System.out.println("🥳 Correcto acertaste");
                 break;
+            }else {
+                checkGuess(humanPlayer, userGuess);
             }
 
-            checkGuess(humanPlayer, userGuess);
-
         }
     }
-
-    private static void checkGuess(Player player, int userGuess){
-         if(userGuess < targetNumber){
+    private static void checkGuess(Player player, int userGuess) {
+        if (userGuess > targetNumber) {
             System.out.println("⬆️ Muy alto, intenta nuevamente");
-        }else if(userGuess > targetNumber){
-            System.out.println("⬆⬇️ Muy bajo, intenta nuevamente");
+        } else {
+            System.out.println("⬇️ Muy bajo, intenta nuevamente");
         }
     }
+
 }
