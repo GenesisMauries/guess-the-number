@@ -15,25 +15,27 @@ public class GuessTheNumberGame {
     private static void startGame(String userName) {
         HumanPlayer humanPlayer = new HumanPlayer(userName);
         ComputerPlayer virtualOpponent = new ComputerPlayer("Oponente virtual");
-        int targetNumber = random.nextInt(10);
+        targetNumber = random.nextInt(10);
+
         int i;
         for(i=1;;i++){
             int userGuess = humanPlayer.makeGuess();
+
+            if (userGuess == targetNumber) {
+                System.out.println("🥳 Correcto acertaste");
+                break;
+            }
+
             checkGuess(humanPlayer, userGuess);
 
-            /*Scanner entrada = new Scanner(System.in);
-            targetNumber = entrada.nextInt();
-           */
         }
     }
 
-    private static void checkGuess(Player player, int numberGuess){
-        if(numberGuess < targetNumber){
+    private static void checkGuess(Player player, int userGuess){
+         if(userGuess < targetNumber){
             System.out.println("⬆️ Muy alto, intenta nuevamente");
-        }else if(numberGuess > targetNumber){
+        }else if(userGuess > targetNumber){
             System.out.println("⬆⬇️ Muy bajo, intenta nuevamente");
-        } else if (numberGuess == targetNumber) {
-            System.out.println("🥳 Correcto acertaste");
         }
     }
 }
