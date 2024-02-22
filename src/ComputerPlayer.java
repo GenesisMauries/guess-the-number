@@ -9,7 +9,7 @@ public class ComputerPlayer extends Player{
 
     @Override
     public int makeGuess() {
-        int computerNumber = random.nextInt(100);
+        int computerNumber = random.nextInt(10);
         guesses.add(computerNumber);
         return computerNumber;
     }

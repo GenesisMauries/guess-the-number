@@ -6,7 +6,6 @@ public class HumanPlayer extends Player {
 
     @Override
     public int makeGuess() {
-        System.out.println("Adivina el número");
         System.out.println("Elige un número entre 1 y 10,");
         Scanner userNumber = new Scanner(System.in);
         guesses.add(userNumber.nextInt());
