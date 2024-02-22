@@ -1,5 +1,16 @@
 import java.util.Random;
-/*public class ComputerPlayer extends Player{
+public class ComputerPlayer extends Player{
+    private Random random;
+
+    public ComputerPlayer(String name) {
+        super(name);
+        this.random = new Random();
+    }
+
     @Override
-    public int makeGuess() {}
-}*/
+    public int makeGuess() {
+        int computerNumber = random.nextInt(100);
+        guesses.add(computerNumber);
+        return computerNumber;
+    }
+}
