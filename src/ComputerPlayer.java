@@ -7,6 +7,10 @@ public class ComputerPlayer extends Player{
         this.random = new Random();
     }
 
+    public String getName() {
+        return "Oponente virtual";
+    }
+
     @Override
     public int makeGuess() {
         int computerNumber = random.nextInt(10);
