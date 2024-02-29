@@ -7,6 +7,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class HumanPlayerTest {
     String playerName = "Test";
     HumanPlayer humanPlayer = new HumanPlayer(playerName);
+
+    @Test
+    public void humanPlayerShouldInheritFromPlayer() {
+        assertTrue(Player.class.isAssignableFrom(HumanPlayer.class), "HumanPlayer hereda Player");
+    }
     @Test
     public void playerShouldHaveCorrectName() {
         assertEquals(playerName, humanPlayer.getName(), "Debería llamar a la jugadora con el nombre correcto");
