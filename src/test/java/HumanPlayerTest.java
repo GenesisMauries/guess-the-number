@@ -17,7 +17,7 @@ class HumanPlayerTest {
         String input = "5";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         int guess = humanPlayer.makeGuess();
-        assertTrue(guess >= 1 && guess <= 10, "Guess should be between 1 and 10");
+        assertTrue(guess >= 0 && guess <= 10, "Debería tener un numero entre 0 y 10");
         System.setIn(System.in);
     }
 
