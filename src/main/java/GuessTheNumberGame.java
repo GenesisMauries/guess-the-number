@@ -6,7 +6,7 @@ public class GuessTheNumberGame {
     private static int targetNumber;
 
     public static void main(String [] args){
-        System.out.print("Ingresa tu nombre: ⌨️ ");
+        System.out.print("Ingresa tu nombre: ");
         Scanner scanner = new Scanner(System.in);
         String userName = scanner.nextLine();
         startGame(userName);
@@ -20,22 +20,24 @@ public class GuessTheNumberGame {
         int i;
         for (i = 1; i <= 6; i++) {
             Player currentPlayer = i % 2 == 1 ? humanPlayer : virtualOpponent;
-            System.out.println("Turno de: " + currentPlayer);
-            int guess = currentPlayer.makeGuess();
-            checkGuess(currentPlayer, guess);
-
-            if (guess == targetNumber) {
-                System.out.println(" 🥳 Correcto " + currentPlayer.getName() + ", acertaste el numero es: " + targetNumber);
+            if(checkGuess(currentPlayer)){
                 break;
             }
         }
     }
-    private static void checkGuess(Player player, int userGuess) {
-        if (userGuess > targetNumber) {
-            System.out.println(userGuess + " ⬆️ Muy alto, intenta nuevamente");
-        } else if(userGuess < targetNumber) {
-            System.out.println(userGuess + " ⬇️ Muy bajo, intenta nuevamente");
+    private static boolean checkGuess(Player player) {
+        System.out.println("Turno de: " + player);
+        int guess = player.makeGuess();
+        if(guess == targetNumber) {
+            System.out.println(" 🥳 Correcto " + player.getName() + ", acertaste el numero es: " + targetNumber);
+            return true;
         }
+        else if (guess > targetNumber) {
+            System.out.println(guess + " ⬆️ Muy alto, intenta nuevamente");
+        } else if(guess < targetNumber) {
+            System.out.println(guess + " ⬇️ Muy bajo, intenta nuevamente");
+        }
+        return false;
     }
 
 }
