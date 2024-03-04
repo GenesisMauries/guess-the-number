@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class GuessTheNumberGame {
     private static final Random random = new Random();
-    private static int targetNumber;
+    private int targetNumber;
 
     private final Player humanPlayer;
     private final Player virtualOpponent;
@@ -34,10 +34,11 @@ public class GuessTheNumberGame {
     }
 
     public boolean checkGuess(Player player) {
-        System.out.println("Turno de: " + player);
+        System.out.println("Turno de: " + player.getName());
         int guess = player.makeGuess();
         if (guess == targetNumber) {
             System.out.println(" 🥳 Correcto " + player.getName() + ", acertaste el numero es: " + targetNumber);
+            System.out.println("Tus intentos fueron " + player.getGuesses().size() + " : " + player.getGuesses());
             return true;
         } else if (guess > targetNumber) {
             System.out.println(guess + " ⬆️ Muy alto, intenta nuevamente");
@@ -45,5 +46,10 @@ public class GuessTheNumberGame {
             System.out.println(guess + " ⬇️ Muy bajo, intenta nuevamente");
         }
         return false;
+    }
+
+    // Método getter para obtener el número objetivo (usado para pruebas)
+    public int getTargetNumber() {
+        return targetNumber;
     }
 }
