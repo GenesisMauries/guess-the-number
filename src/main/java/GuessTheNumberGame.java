@@ -1,6 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
+
 public class GuessTheNumberGame {
     private static final Random random = new Random();
     private int targetNumber;
@@ -12,7 +13,9 @@ public class GuessTheNumberGame {
         this.humanPlayer = humanPlayer;
         this.virtualOpponent = virtualOpponent;
     }
-
+    public void setTargetNumber(int newTargetNumber) {
+        this.targetNumber = newTargetNumber;
+    }
     public static void main(String[] args) {
         System.out.print("Ingresa tu nombre: ");
         Scanner scanner = new Scanner(System.in);
@@ -22,7 +25,7 @@ public class GuessTheNumberGame {
     }
 
     public void startGame() {
-        targetNumber = random.nextInt(10);
+        setTargetNumber(random.nextInt(10));
 
         int i;
         for (i = 1; i <= 6; i++) {
@@ -42,14 +45,9 @@ public class GuessTheNumberGame {
             return true;
         } else if (guess > targetNumber) {
             System.out.println(guess + " ⬆️ Muy alto, intenta nuevamente");
-        } else if (guess < targetNumber) {
+        } else{
             System.out.println(guess + " ⬇️ Muy bajo, intenta nuevamente");
         }
         return false;
-    }
-
-    // Método getter para obtener el número objetivo (usado para pruebas)
-    public int getTargetNumber() {
-        return targetNumber;
     }
 }

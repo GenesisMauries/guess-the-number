@@ -19,4 +19,12 @@ class ComputerPlayerTest {
         int guess = computerPlayer.makeGuess();
         assertTrue(guess >= 0 && guess <= 9, "Debería ser un numero entre 0 y 10");
     }
+    @Test
+    public void testMakeGuessReturnsRandomNumberBetween1And10() {
+        ComputerPlayer player = new ComputerPlayer("Oponente virtual");
+        for (int i = 0; i < 50; i++) {
+            int randomNumber = player.makeGuess();
+            assertTrue(randomNumber >= 0 && randomNumber <= 10);
+        }
+    }
 }
